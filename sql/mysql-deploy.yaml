@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: sql
+  name: sql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: sql
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: sql
+    spec:
+      containers:
+      - image: mysql
+        name: sql
+        env:
+          - name: MYSQL_ROOT_PASSWORD
+            value: passwd
+        volumeMounts:
+          - name: mysql-storage
+            mountPath: /var/lib/mysql
+      volumes:
+        - name: mysql-storage
+          persistentVolumeClaim:
+            claimName: pvc-mysql
