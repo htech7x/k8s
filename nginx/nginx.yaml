@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deploy # name of deployment
+  labels:
+    lemax: one # any label which identify your deployment
+spec:
+  replicas: 2 # amound of pods in deployment
+  selector:
+    matchLabels:
+      lemax: one # should be the same like label in "metadata" section
+  template:
+    metadata:
+      labels:
+        lemax: one
+    spec:
+      containers:
+        - image: nginx
+          name: nginx
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service # name of the service
+spec:
+  type: NodePort
+  ports:
+    - port: 80
+  selector:
+    lemax: one # this is how service knows which deployment should be exposed
