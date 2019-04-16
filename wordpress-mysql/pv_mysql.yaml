@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-mysql-wp
+spec:
+  accessModes:
+    - ReadWriteMany
+  capacity:
+    storage: 3Gi
+  nfs:                  # nfs server should be ready
+    server: <server_ip> 
+    path: /folder/mysql # folder on nfs which will be shared (check chown and chmod)
+

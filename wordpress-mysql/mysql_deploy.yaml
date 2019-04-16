@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sql-wp # name of deployment
+  labels:
+    app: mysql-wp # label which identify your deployment
+spec:
+  replicas: 1     # amount of pods in deployment
+  selector:
+    matchLabels:
+      app: mysql-wp # should be the same like label in "metadata" section
+  template:
+    metadata:
+      labels:
+        app: mysql-wp
+    spec:
+      containers:
+        - image: mysql:5.7
+          name: sql
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: "1234567"
+          volumeMounts:
+            - name: mysql-storage
+              mountPath: /var/lib/mysql
+      volumes:
+        - name: mysql-storage
+          persistentVolumeClaim:
+            claimName: pvc-mysql-wp
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-svc # name of service
+spec:
+  type: ClusterIP
+  ports:
+    - port: 3306
+  selector:
+    app: mysql-wp # this is how service knows which deployment should be exposed, see deployment "labels"
