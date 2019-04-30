@@ -1,0 +1,25 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-apache-nginx
+spec:
+  rules:
+  - host: ap.htech7x.com
+    http:
+      paths:
+      - backend:
+          serviceName: web-apache
+          servicePort: 80
+  - host: ng.htech7x.com
+    http:
+      paths:
+      - backend:
+          serviceName: web-nginx
+          servicePort: 80
+
+# add ip of your ingress-controller into /etc/hosts
+# ip    ap.htech7x.com
+# ip    web-apache
+# check using for example curl:
+# curl ap.htech7x.com
+# curl web-apache
