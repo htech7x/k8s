@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: two-backand-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /ap
+        backend:
+          serviceName: web-apache
+          servicePort: 80
+      - path: /ng
+        backend:
+          serviceName: web-nginx
+          servicePort: 80
+
