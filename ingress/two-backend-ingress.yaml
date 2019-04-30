@@ -1,3 +1,4 @@
+# this is ingress rule with access using IP of nginx-controller
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
