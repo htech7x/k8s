@@ -7,3 +7,7 @@ spec:
   backend:
     serviceName: web-apache
     servicePort: 80
+
+# check using for example curl:
+# curl <nginx-controller-ip>
+
