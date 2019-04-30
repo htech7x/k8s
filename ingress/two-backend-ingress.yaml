@@ -19,3 +19,6 @@ spec:
           serviceName: web-nginx
           servicePort: 80
 
+# check using for example curl:
+# curl <nginx-controller-ip>/ap
+# curl <nginx-controller-ip>/ng
