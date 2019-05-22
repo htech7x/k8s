@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      lemax: one
+  template:
+    metadata:
+      labels:
+        lemax: one
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+spec:
+  selector:
+    lemax: one
+  type: ClusterIP
+  ports:
+    - port: 8080
+      targetPort: 80
