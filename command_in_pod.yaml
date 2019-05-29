@@ -1,0 +1,20 @@
+#You have different ways how to specify commands inside container  
+
+
+apiVersion: v1
+kind: Pod
+
+...
+spec:
+  container:
+    - name: my-pod
+      ...
+      command:
+        - "bin/bash"
+        - "-c"
+        - "mycommand"
+      or
+      command: [ "bin/bash", "-c", "mycommand" ]
+      or
+      command: ["/bin/bash"]
+      args: ["-c", "mycommand"]
