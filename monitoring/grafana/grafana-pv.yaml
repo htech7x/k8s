@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-nfs-grafana
+spec:
+  storageClassName: pv-grafana
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 1Gi
+  nfs:
+    server: 172.19.112.224
+    path: /nas_disk/vol-grafana

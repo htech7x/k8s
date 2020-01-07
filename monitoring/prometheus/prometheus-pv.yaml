@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-nfs-prometheus
+  namespace: monitoring
+spec:
+  storageClassName: nfs-manual
+  accessModes:
+    - ReadWriteMany
+  capacity:
+    storage: 10Gi
+  nfs:
+    server: 172.19.112.224
+    path: /nas_disk/vol-prometheus
+
