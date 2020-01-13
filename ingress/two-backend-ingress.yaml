@@ -5,10 +5,10 @@ metadata:
   name: two-backand-ingress
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
-    nginx.ingress.kubernetes.io/ssl-redirect: "false"
     #In some scenarios the exposed URL in the backend service differs from the specified path in the Ingress rule.
     #Without a rewrite any request will return 404.
     #To circumvent this you can set the annotation ingress.kubernetes.io/rewrite-target to the path expected by the service.
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
 spec:
   rules:
   - http:
