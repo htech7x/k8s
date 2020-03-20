@@ -8,4 +8,5 @@ spec:
       image: nginx
       ports:
         - containerPort: 80
-  nodeName: node2
+  nodeName: node2       # by default 'nodeName' isn't specified. Thus scheduler can chose any accessible
+                        # but you can specify node yourself
