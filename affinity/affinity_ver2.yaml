@@ -13,5 +13,5 @@ spec:
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms:
           - matchExpressions:
-            - key: mynode
+            - key: mynode # label of the node
               operator: Exists
