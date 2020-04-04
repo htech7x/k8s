@@ -20,7 +20,7 @@ metadata:
 subjects:
   - kind: ServiceAccount
     name: dev
-    namespace: default
+    namespace: default # The namespace must be specified, without it the service account "dev" will not have permission
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   name: role_for_webspace
