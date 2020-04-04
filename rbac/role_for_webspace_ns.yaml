@@ -1,0 +1,27 @@
+# Create a service account "dev", for example, in ns "default"
+# and add permission "read" "pod" in ns web space
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: role_for_webspace
+  namespace: webspace # role namespaced oriented
+rules:
+  - apiGroups: [""]
+    resources: ["pods"] # this role can see only pods object
+    verbs: ["get","list","watch"]
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: rolebind_for_webspace
+  namespace: webspace
+subjects:
+  - kind: ServiceAccount
+    name: dev
+    namespace: default
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  name: role_for_webspace
+  kind: Role
