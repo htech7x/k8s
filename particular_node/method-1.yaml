@@ -9,4 +9,4 @@ spec:
       env:
         - name: MYSQL_ROOT_PASSWORD
           value: "1234567"
-  nodeName: node3
+  nodeName: node3 # specify the node to be used
