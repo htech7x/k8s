@@ -10,3 +10,6 @@ spec:
         - name: MYSQL_ROOT_PASSWORD
           value: "1234567"
   nodeName: node3 # specify the node to be used
+                  # nodeName takes precedence over restrictions(like taints) and all methods for node selection
+                  # https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#nodename
+                  
