@@ -13,3 +13,4 @@ kubectl apply -f ~/metrics-server/deploy/1.8+/
 
 Check metrics server:
 kubectl get --raw /apis/metrics.k8s.io/
+kubectl get --raw "/apis/metrics.k8s.io/v1beta1/nodes"
