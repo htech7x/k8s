@@ -1,0 +1,5 @@
+Node Exporter for Prometheus Dashboard EN v20191102: 11074
+Kubernetes Deployment Statefulset Daemonset metrics: 8588
+Cluster Monitoring for Kubernetes: 10000
+K8 Cluster Detail Dashboard: 10856
+Kubernetes - Cluster Overview: 12202
