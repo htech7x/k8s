@@ -1,0 +1,68 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-as-user
+spec:
+  containers:
+    - name: contic
+      image: nginx
+      ports:
+        - containerPort: 80
+      securityContext:    # all all processes run with user ID 1010 
+        runAsUser: 1010   #
+
+
+---
+
+#for multiple containers in the pod
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-as-user
+spec:
+  containers:
+    - name: contic
+      image: nginx
+      ports:
+        - containerPort: 80
+      securityContext:    # all processes run with user ID 1010 
+        runAsUser: 1010   #
+    - name: contic2       # all processes run with user root in  container contic2
+      image: httpd
+
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-as-user
+spec:
+  securityContext:       # all processes run with user ID 1010
+    rusAsUser: 1010      # in all containers in the pods
+  containers:
+    - name: contic
+      image: nginx
+      
+    - name: contic2      
+      image: httpd
+
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-as-user
+spec:
+  securityContext:       
+    rusAsUser: 1010      
+  containers:
+    - name: contic
+      image: nginx
+      securityContext:    # all processes run with user ID 2020
+        runAsUser: 2020   # container "securityContext" rewrites pod's "securityContext" 
+    - name: contic2       # all processes run with user ID 1010
+      image: httpd        # because "securityContext" on the pod is 1010
+
+
+
