@@ -13,10 +13,10 @@ output example:
 2. Edit /etc/kubernetes/manifests/etcd.yaml
 
 
-  -- change  "--data-dir=/var/lib/etcd" to "--data-dir=/var/lib/etcd-from-backup"
-  -- add "--initial-cluster-token=etcd-cluster-1"
-  -- change "volumeMounts: - mountPath: /var/lib/etcd" to "volumeMounts: - mountPath: /var/lib/etcd-from-backup"
-  -- change "hostPath: path: /var/lib/etcd" to "hostPath: path: /var/lib/etcd-from-backup"
+  2.1 change  "--data-dir=/var/lib/etcd" to "--data-dir=/var/lib/etcd-from-backup"
+  2.2 add "--initial-cluster-token=etcd-cluster-1"
+  2.3 change "volumeMounts: - mountPath: /var/lib/etcd" to "volumeMounts: - mountPath: /var/lib/etcd-from-backup"
+  2.4 change "hostPath: path: /var/lib/etcd" to "hostPath: path: /var/lib/etcd-from-backup"
 
 3. Wait until "etcd" pod will be recreated
 
