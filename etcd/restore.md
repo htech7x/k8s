@@ -1,4 +1,4 @@
-#Restore from snapthot:
+#Restore from snapshot:
 
 
 etcdctl --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/server.crt --key=/etc/kubernetes/pki/etcd/server.key --endpoints=127.0.0.1:2379 --name=master --data-dir=/var/lib/etcd-from-backup --initial-cluster=master=https://127.0.0.1:2380 --initial-cluster-token=etcd-cluster-1 --initial-advertise-peer-urls=https://127.0.0.1:2380 snapshot restore /dir_for_shapshot/shapshot_name.db
