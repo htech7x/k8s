@@ -5,7 +5,7 @@ wget https://github.com/prometheus/node_exporter/releases/download/v1.0.0/node_e
 
 tar xvfz node_exporter-1.0.0.linux-amd64.tar.gz
 
-mv node_exporter-1.0.0.linux-amd64.tar.gz/ node_exporter
+mv node_exporter-1.0.0.linux-amd64/ node_exporter
 
 Create unit:
 vim /etc/systemd/system/node_exporter.service
