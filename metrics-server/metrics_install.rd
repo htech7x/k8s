@@ -5,6 +5,22 @@ https://github.com/kubernetes-sigs/metrics-server
 kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.3.6/components.yaml
 
 
+error:
+	$ kubectl top node
+	error: metrics not available yet
+
+solution:
+add to "metrics-server" Deployment:
+...
+      containers:
+      - name: metrics-server
+...
+        args:
+          - --kubelet-preferred-address-types=InternalIP
+          - --kubelet-insecure-tls
+...
+
+
 Old way:
 git clone https://github.com/linuxacademy/metrics-server
 kubectl apply -f ~/metrics-server/deploy/1.8+/
