@@ -1,0 +1,15 @@
+# in this case pod will have nameserver 8.8.8.8 in the /etc/resolv.conf 
+# pod won't inherit nameserver from the kube-dns and won't be handled by k8s dns
+apiVersion: v1
+kind: Pod
+metadata:
+  name: dns-pod
+spec:
+  containers:
+    - name: contic
+      image: busybox
+      command: ["/bin/sh","-c","sleep 3000"]
+  dnsPolicy: None
+  dnsConfig:
+    nameservers:
+      - 8.8.8.8
