@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-scala
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: scala
+  template:
+    metadata:
+      labels:
+        app: scala
+    spec:
+      containers:
+        - name: ccc
+          image: busybox
+          command: ["/bin/sh","-c","sleep 3000"]
+          resources:
+            limits:
+              cpu: 200m
+            requests:
+              cpu: 100m
