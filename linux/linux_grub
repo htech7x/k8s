@@ -1,0 +1,25 @@
+
+# grub linux
+https://unix.stackexchange.com/questions/70538/grub-error-file-grub-i386-pc-normal-mod-not-found
+
+error: file '/grub/i386-pc/normal.mod' not found
+
+
+1. I just had this problem today after a fresh install of Mint 15.
+
+The installer created /boot/grub/x86_64-efi modules but not the regular /boot/grub/i386-pc modules.
+
+A re-installation of Grub from the Live CD fixed the issue.
+
+Replace /dev/sda and /dev/sda1 with your boot device and boot partition and run the following commands from the Live CD:
+
+sudo mount /dev/sda1 /mnt
+sudo grub-install --boot-directory=/mnt /dev/sda
+sudo reboot
+
+2. https://gutsytechster.wordpress.com/2018/07/24/how-to-resolve-grub-error-file-grub-i386-pc-normal-mod-not-found/
+
+grub rescue> insmod linux
+grub rescue> linux /boot/vimlinuz-linux root=/dev/sda4
+grub rescue> initrd /boot/initramfs-linux.img
+grub rescue> boot

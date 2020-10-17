@@ -1,0 +1,20 @@
+# create namespace
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: my-space
+
+---
+# create quota for namespace
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: quota-for-ns
+  namespace: my-space
+spec:
+  hard:
+    pods: 4
+    #   requests.cpu: 4
+    #  requests.memory: 2Gi
+    # limits.cpu: 8
+    #limits.memory: 4Gi
