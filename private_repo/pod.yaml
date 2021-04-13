@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: private
+spec:
+  containers:
+    - name: contic
+      image:  htech7x/my_private_image
+  imagePullSecrets:
+    - name: my-repo
