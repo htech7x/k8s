@@ -1,0 +1,14 @@
+# this is ingress rule with access using IP of nginx-controller
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: one-backand-ingress
+spec:
+  defaultBackend:
+    service:
+      name: web-apache
+      port:
+        number: 80
+
+# check using for example curl:
+# curl <nginx-controller-ip>

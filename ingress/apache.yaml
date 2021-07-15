@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-apache-deploy
+  labels:
+    app: web-apache
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web-apache
+  template:
+    metadata:
+      labels:
+        app: web-apache
+    spec:
+      containers:
+      - image: httpd
+        name: apache
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-apache
+spec:
+  type: NodePort
+  ports:
+    - port: 80
+  selector:
+    app: web-apache
+
