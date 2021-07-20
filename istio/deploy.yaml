@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+        server: web
+    spec:
+      containers:
+        - name: contic-nginx
+          image: nginx
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-apache
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: apache
+  template:
+    metadata:
+      labels:
+         app: apache
+         server: web
+    spec:
+      containers:
+        - name: contic-httpd
+          image: httpd

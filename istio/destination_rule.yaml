@@ -1,0 +1,13 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: web-dest-rule
+spec:
+  host: web-server # name of the k8s service. (One service for apache and nginx in this example)
+  subsets:
+  - name: apache-dr # should be the same as in VirtualService
+    labels:
+      app: apache
+  - name: nginx-dr # should be the same as in VirtualService
+    labels:
+      app: nginx

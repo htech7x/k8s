@@ -1,0 +1,16 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: cluster-gateway
+  namespace: default
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - hosts:
+    - web.alex  # url which will be used in curl or browser 
+    port:
+      name: some_name
+      number: 80
+      protocol: HTTP
+

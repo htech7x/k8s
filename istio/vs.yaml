@@ -1,0 +1,19 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: split-vs
+spec:
+  hosts:
+  - web.alex
+  gateways:
+  - cluster-gateway
+  http:
+   - route:
+      - destination:
+          host: web-server # name of k8s svc. The same for DestinationRule in field "spec.host"
+          subset: nginx-dr # same as in DestinationRule
+        weight: 20
+      - destination:
+          host: web-server # name of k8s svc
+          subset: apache-dr # same as in DestinationRule
+        weight: 80
