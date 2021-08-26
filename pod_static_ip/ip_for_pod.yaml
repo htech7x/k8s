@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ip
+  annotations:
+    author: "htech7x"
+    "cni.projectcalico.org/ipAddrs": "[\"192.168.111.111\"]"
+spec:
+  containers:
+    - name: contic
+      image: httpd
