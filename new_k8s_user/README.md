@@ -25,3 +25,4 @@ kubectl get csr alex -ojsonpath="{.status.certificate}" | base64 -d  > alex.crt
 
 6. Add to config file and use:
 kubectl config set-credentials alex --client-key alex.key --client-certificate alex.crt
+kubectl config set-context alex --cluster kubernetes --user alex
