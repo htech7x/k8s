@@ -9,3 +9,6 @@ How to use PSP in k8s.
 
 4. Enjoy
  
+NOTE: to check PSP create DEPLOYMENT not POD
+pod can be created but if you don't have perm for creating deployment you will see RS in not ready state
+"kubectl describe rs" will show more details about the issue
