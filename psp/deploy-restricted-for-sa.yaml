@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: htech7x-deploy
+spec:
+  selector:
+    matchLabels:
+      app: run
+  template:
+    metadata:
+      labels:
+        app: run
+    spec:
+      serviceAccount: htech7x
+      hostNetwork: true
+      containers:
+      - name: nginx
+        image: nginx
+

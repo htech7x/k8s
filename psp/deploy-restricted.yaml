@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: restricted
+spec:
+  selector:
+    matchLabels:
+      app: run
+  template:
+    metadata:
+      labels:
+        app: run
+    spec:
+      hostNetwork: true
+      containers:
+      - name: nginx
+        image: nginx
+
