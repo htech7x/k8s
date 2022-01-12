@@ -6,7 +6,6 @@ spec:
   accessModes:
     - ReadWriteMany
   capacity:
-    storage: 3Gi
-  nfs:
-    server: <server_ip>
-    path: /folder/wordpress
+    storage: 2Gi
+  hostPath:
+    path: /web/wordpress

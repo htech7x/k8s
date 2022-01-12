@@ -19,7 +19,13 @@ spec:
           name: sql
           env:
             - name: MYSQL_ROOT_PASSWORD
-              value: "1234567"
+              value: root_passwd
+            - name: MYSQL_DATABASE # w/o these envs you wont be able to connect to db with error
+              value: wordpress     # "Error establishing a database connection"
+            - name: MYSQL_USER     #
+              value: wordpress     #
+            - name: MYSQL_PASSWORD #
+              value: my_passwd     #
           volumeMounts:
             - name: mysql-storage
               mountPath: /var/lib/mysql

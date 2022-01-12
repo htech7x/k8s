@@ -5,7 +5,7 @@ metadata:
   labels:
     app: word
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: word
@@ -15,13 +15,15 @@ spec:
         app: word
     spec:
       containers:
-        - image: wordpress:5.6 # image ver > 5.6 won't work due to changing wp-config.php 
+        - image: wordpress
           name: wordpress
           env:
           - name: WORDPRESS_DB_HOST
             value: mysql-svc:3306
+          - name: WORDPRESS_DB_USER
+            value: wordpress
           - name: WORDPRESS_DB_PASSWORD
-            value: "1234567"
+            value: my_passwd
           ports:
             - containerPort: 80
               name: wordpress
@@ -42,6 +44,7 @@ spec:
   ports:
     - port: 80
       targetPort: 80
+      nodePort: 31313
       protocol: TCP
   selector:
     app: word
