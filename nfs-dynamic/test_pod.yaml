@@ -4,7 +4,7 @@ metadata:
   name: pod-sc-test
 spec:
   containers:
-    - name: contic
+    - name: alex
       image: busybox
       command: ["/bin/sh","-c","sleep 3600"]
       volumeMounts:

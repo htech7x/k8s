@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: nfs-client-provisioner
   # replace with namespace where provisioner is deployed
-  namespace: default
+  namespace: nfs
 spec:
   replicas: 1
   strategy:
@@ -27,11 +27,11 @@ spec:
             - name: PROVISIONER_NAME # don't change
               value: my-nfs-provisioner # should be same like in StorageClass
             - name: NFS_SERVER # don't change
-              value: 172.31.29.73 # NFS server IP
+              value: 172.31.88.224 # NFS server IP
             - name: NFS_PATH # don't change
-              value: /nfs-dynamic # shared folder on NFS server
+              value: /nfs # shared folder on NFS server
       volumes:
         - name: nfs-client-root
           nfs:
-            server: 172.31.29.73
-            path: /nfs-dynamic
+            server: 172.31.88.224
+            path: /nfs
