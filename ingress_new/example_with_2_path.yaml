@@ -1,0 +1,29 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: minimal-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx # add to specify the IngressClass. You can find the name in spec of "ingress-nginx-controller" deployment
+  rules:
+  - http:
+      paths:
+      - path: /prod
+        pathType: Prefix
+        backend:
+          service:
+            name: web-nginx
+            port:
+              number: 80
+      - path: /dev
+        pathType: Prefix
+        backend:
+          service:
+            name: web-apache
+            port:
+              number: 80
+
+# check using for example curl:
+# curl <nginx-controller-ip>/prod
+# curl <nginx-controller-ip>/dec

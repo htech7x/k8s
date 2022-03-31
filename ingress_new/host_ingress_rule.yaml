@@ -1,0 +1,36 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-hosts-rule
+  namespace: default
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  rules:
+  - host: apache.htech7x.com
+    http:
+      paths:
+      - backend:
+          service:
+            name: web-apache
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
+  - host: nginx.htech7x.com
+    http:
+      paths:
+      - backend:
+          service:
+            name: web-nginx
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
+
+# add ip of your ingress-controller into /etc/hosts
+# ip    ap.htech7x.com
+# ip    web-apache
+# check using for example curl:
+# curl apache.htech7x.com
+# curl nginx.htech7x.com
