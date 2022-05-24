@@ -27,11 +27,11 @@ spec:
             - name: PROVISIONER_NAME # don't change
               value: my-nfs-provisioner # should be same like in StorageClass
             - name: NFS_SERVER # don't change
-              value: 172.31.81.205 # NFS server IP
+              value: 172.31.80.120 # NFS server IP
             - name: NFS_PATH # don't change
               value: /nfs # shared folder on NFS server
       volumes:
         - name: nfs-client-root
           nfs:
-            server: 172.31.81.205
+            server: 172.31.80.120
             path: /nfs
