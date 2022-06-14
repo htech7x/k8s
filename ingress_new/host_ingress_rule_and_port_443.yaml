@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-hosts-rule
+  namespace: default
+  annotations:
+    kubernetes.io/ingress.class: "nginx-default"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS" # if service is only reachable via https need to add the following annotation
+spec:
+  rules:
+  - host: my-web.htech7x.com
+    http:
+      paths:
+      - backend:
+          service:
+            name: my-web
+            port:
+              number: 443
+        path: /
+        pathType: Prefix
+

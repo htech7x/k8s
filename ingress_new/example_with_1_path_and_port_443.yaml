@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: minimal-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS" # # if service is only reachable via https need to add the following annotation
+spec:
+  ingressClassName: nginx-default #add to specify the IngressClass. You can find the name in spec of "ingress-nginx-controller" deployment
+  rules:
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: my-svc
+            port:
+              number: 443
