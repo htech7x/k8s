@@ -24,5 +24,6 @@ spec:
                 operator: In
                 values:
                 - ssd
+      # node/nodes need to have label "app=ssd" to be able to host the pods of the deployment
 
 
