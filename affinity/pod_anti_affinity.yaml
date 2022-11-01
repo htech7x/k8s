@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pod-anti-affinity
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: mypod
+  template:
+    metadata:
+      labels:
+        app: mypod
+    spec:
+      containers:
+        - name: htech7x
+          image: nginx
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - mypod # <---- used to check if the pod with the label "mypod" is already present on node. If so, the pod wont be created
+            topologyKey: "kubernetes.io/hostname"
+
+

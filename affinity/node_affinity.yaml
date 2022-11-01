@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-affinity
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: run
+  template:
+    metadata:
+      labels:
+        app: run
+    spec:
+      containers:
+        - name: htech7x
+          image: nginx
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - ssd
+
+
