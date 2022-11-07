@@ -7,7 +7,7 @@ Download the latest version of kubeseal(sealed-secret): https://github.com/bitna
 
 2. "Kubernetes Secret controller"  -> used to decrypt the sealed secret and store it as secret in the Kubernetes Cluster.
 You have to install the sealed secret controller on the Kubernetes cluster:
-kubectl apply -f https://github.com/bitnami-labs/sealed-secrets/releases/download/<release>/controller.yaml
+kubectl apply -f https://github.com/bitnami-labs/sealed-secrets/releases/download/release_name/controller.yaml
 
 
 How to create sealed secret:
