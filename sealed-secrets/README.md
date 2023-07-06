@@ -17,13 +17,13 @@ How to create sealed secret:
 example "secret-template.yaml"
 
 2. Create sealed secret from "secret-template.yaml":
-
+"
 cat secret-template.yaml | kubeseal \
     --controller-namespace kube-system \
     --controller-name sealed-secrets-controller \
     --format yaml \
     > sealed-secret.yaml
-
+"
 NOTE: manifest "sealed-secret.yaml" contains encrypted data for the secret. 
 Now this sealed secret file can be pushed to the Git or other public repo and can be executed using the "kubectl apply".
 
