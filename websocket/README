@@ -1,0 +1,16 @@
+How to connect to app using websocket client "wscat" ("curl" can't connect to it without the required plugin)
+
+
+if the app uses TLS, then the “wss” protocol is used:
+ wscat -n -H "Host:test.com" -c wss://<ip>
+
+if the app insecure, w/o TLS, then the “ws” protocol is used:
+ wscat -H "Host:test.com" -c ws://<ip>
+
+Example:
+
+ wscat -c ws://3.22.117.239:31500/ 
+Connected (press CTRL+C to quit)
+> hello
+< You said: hello
+> %

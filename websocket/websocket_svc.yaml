@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: websocket-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: websock
+  template:
+    metadata:
+      labels:
+        app: websock
+    spec:
+      containers:
+        - name: websock
+          image: htech7x/websocket-server:latest
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: websocket-server
+spec:
+  selector:
+    app: websock
+  ports:
+    - port: 80
+      targetPort: 8080
