@@ -1,0 +1,6 @@
+How to interact with grpc server in Gloo EE:
+
+grpcurl -insecure -authority hello.example.com -proto examples/src/main/proto/helloworld.proto -d '{"name": "htech7x"}' $(glooctl proxy address --port https) helloworld.Greeter/SayHello
+{
+  "message": "Hello htech7x"
+}
