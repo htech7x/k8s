@@ -1,0 +1,4 @@
+NodePort and LoadBalancer can be used to expose services to external consumers,
+In contrast, ExternalName provides an alias to an external service, making it addressable as if it were part of your internal network.
+
+So, in case you need to have access from inside of the k8s cluster to svc outside, you need to use svc type "ExternalName"
