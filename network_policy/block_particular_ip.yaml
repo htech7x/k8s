@@ -1,4 +1,4 @@
-# how to block ingress/egress to IP in or out k8s cluster
+# how to block egress to IP in or out k8s cluster
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
