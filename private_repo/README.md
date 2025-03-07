@@ -4,4 +4,4 @@ kubectl create secret docker-registry --docker-server=DOCKER_REGISTRY_SERVER --d
 
 example:
 
-kubectl create secret docker-registry my_repo --docker-username htech7x --docker-password password123
+kubectl create secret docker-registry my-repo --docker-username htech7x --docker-password password123
