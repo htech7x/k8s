@@ -1,0 +1,11 @@
+For zsh (macOS):
+
+brew install google-cloud-sdk
+echo 'export PATH="$(brew --prefix)/share/google-cloud-sdk/bin:$PATH"' >> ~/.zshrc
+echo 'export USE_GKE_GCLOUD_AUTH_PLUGIN=True' >> ~/.zshrc
+
+
+gcloud version
+gke-gcloud-auth-plugin --version
+kubectl version --client
+
